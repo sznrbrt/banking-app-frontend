@@ -4,8 +4,40 @@ var app = angular.module('myApp', []);
 
 app.controller('mainCtrl', function($scope) {
 
-  $scope.transactions = [];
+  $scope.transactions = [
+    {
+      "date": moment().format('MMMM Do YYYY'),
+      "description": "Transaction #1",
+      "note": undefined,
+      "dr": 0,
+      "cr": 1000,
+      "entry": "Credit"
+    },
+    {
+      "date": moment().format('MMMM Do YYYY'),
+      "description": "Transaction #2",
+      "note": undefined,
+      "dr": 1000,
+      "cr": 0,
+      "entry": "Debit"
+    },
+    {
+      "date": moment().format('MMMM Do YYYY'),
+      "description": "Transaction #3",
+      "note": undefined,
+      "dr": 0,
+      "cr": 5000,
+      "entry": "Credit"
+    }
+  ];
 
+  $scope.clearInput = () => {
+    $scope.note = "";
+    $scope.description = "";
+    $scope.date = undefined;
+    $scope.entryValue = undefined;
+    $scope.entry = undefined;
+  }
   getBalance();
 
   $scope.addEntry = () => {
@@ -31,17 +63,10 @@ app.controller('mainCtrl', function($scope) {
       $scope.transactions.push(newTransaction);
       var newTransaction = {};
     }
-    clearInput();
+    $scope.clearInput();
     getBalance();
   }
 
-  $scope.clearInput = ()=>{
-    $scope.note = "";
-    $scope.description = "";
-    $scope.date = undefined;
-    $scope.entryValue = undefined;
-    $scope.entry = undefined;
-  }
 
   $scope.deleteEntry = (transaction) => {
     var index = $scope.transactions.indexOf(transaction);
