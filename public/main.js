@@ -10,26 +10,28 @@ app.controller('mainCtrl', function($scope) {
 
   $scope.addEntry = () => {
     var newTransaction = {
-      "date": $scope.date,
+      "date": moment($scope.date).format('MMMM Do YYYY'),
       "description": $scope.description,
       "note": $scope.note,
       "dr": 0,
       "cr": 0,
       "entry": $scope.entry
     };
-    console.log($scope.entry === 'Credit');
+    if(!newTransaction.date  || !newTransaction.description || !newTransaction.entry ) return;
     if($scope.entry === 'Credit'){
       newTransaction.cr = $scope.entryValue;
+      if(!newTransaction.cr) return;
       newTransaction.dr = 0;
       $scope.transactions.push(newTransaction);
       var newTransaction = {};
     } else {
       newTransaction.cr = 0;
       newTransaction.dr = $scope.entryValue;
+      if(!newTransaction.dr) return;
       $scope.transactions.push(newTransaction);
       var newTransaction = {};
     }
-
+    clearInput();
     getBalance();
   }
 
@@ -37,7 +39,8 @@ app.controller('mainCtrl', function($scope) {
     $scope.note = "";
     $scope.description = "";
     $scope.date = undefined;
-    $scope.entryValue = 0;
+    $scope.entryValue = undefined;
+    $scope.entry = undefined;
   }
 
   $scope.deleteEntry = (transaction) => {
