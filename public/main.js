@@ -6,7 +6,7 @@ app.controller('mainCtrl', function($scope) {
 
   $scope.transactions = [
     {
-      "date": moment().format('MMMM Do YYYY'),
+      "date": "2016-04-22T07:00:00.000Z",
       "description": "Transaction #1",
       "note": undefined,
       "dr": 0,
@@ -14,7 +14,7 @@ app.controller('mainCtrl', function($scope) {
       "entry": "Credit"
     },
     {
-      "date": moment().format('MMMM Do YYYY'),
+      "date": "2016-04-22T07:00:00.000Z",
       "description": "Transaction #2",
       "note": undefined,
       "dr": 1000,
@@ -22,7 +22,7 @@ app.controller('mainCtrl', function($scope) {
       "entry": "Debit"
     },
     {
-      "date": moment().format('MMMM Do YYYY'),
+      "date": "2016-04-22T07:00:00.000Z",
       "description": "Transaction #3",
       "note": undefined,
       "dr": 0,
@@ -42,7 +42,7 @@ app.controller('mainCtrl', function($scope) {
 
   $scope.addEntry = () => {
     var newTransaction = {
-      "date": moment($scope.date).format('MMMM Do YYYY'),
+      "date": $scope.date,
       "description": $scope.description,
       "note": $scope.note,
       "dr": 0,
