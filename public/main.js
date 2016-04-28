@@ -106,6 +106,7 @@ app.controller('mainCtrl', function($scope) {
     edited.note = $scope.modalNote;
     $scope.transactions[index] = edited;
     $('.modal').modal('hide');
+    getBalance();
   };
 
   $scope.sortBy = (order) => {
