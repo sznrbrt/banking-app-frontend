@@ -6,20 +6,19 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-</head>
-<body ng-app>
-  <div class="container-fluid">
 
+  <script src="main.js"></script>
+</head>
+<body ng-app='myApp' ng-controller='mainCtrl'>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 noBorPad">
         <div class="row">
           <div class="topper noBorPad">
             <div class="col-xs-6">
               <div class="row">
-              <div class="col-xs-4 noBorPad">
+              <div class="col-xs-8 noBorPad">
                 <h4 class="balance">Balance: <span id="balance">100,000</span> $</h4>
-              </div>
-              <div class="col-xs-4 noBorPad">
                 <h5 class="debit">Debit: <span id="balance">50000</span> $</h5>
                 <h5 class="credit">Credit: <span id="balance">150000</span> $</h5>
               </div>
@@ -40,11 +39,11 @@
             <div class="row">
               <div class="form-group">
                 <label>Description:</label>
-                <input type="text" class="form-control" placeholder="Name" ng-model=''>
+                <input type="text" class="form-control" placeholder="Name">
               </div>
               <div class="form-group">
                 <label>Date:</label>
-                <input type="date" class="form-control" ng-model=''>
+                <input type="date" class="form-control">
               </div>
               <div class="form-group">
                 <label for="sel1">Debit/Credit</label>
@@ -55,7 +54,7 @@
               </div>
               <div class="form-group">
                 <label>Note:</label>
-                <input type="text" class="form-control" placeholder="Enter notes" ng-model=''>
+                <input type="text" class="form-control" placeholder="Enter notes">
               </div>
             </div>
             <div class="row">
@@ -74,7 +73,7 @@
         <div class="col-xs-12">
           <div class="form-group search">
             <label>Search</label>
-            <input type="text" class="form-control" ng-model='searchFilter'>
+            <input type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -91,16 +90,16 @@
               <th class="buttonField">Edit</th>
               <th class="buttonField">Delete</th>
             </thead>
+            <tbody>
+              <tr ng-repeat="transaction in transactions track by $index">
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.description }}</td>
+                <td>{{ transaction.dr }}</td>
+                <td>{{ transaction.cr }}</td>
+                <td>{{ transaction.note }}</td>
+              </tr>
+            </tbody>
           </table>
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
         </div>
       </div>
   </div>
